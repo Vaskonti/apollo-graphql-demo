@@ -3,11 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <title>Apollo GraphQL</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #2a72b5;
+        }
+
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 5px;
+            color: blueviolet;
+            font-family: Consolas, "courier new";
+            border-radius: 3px;
+            font-size: 1.1em;
+            display: block;
+            margin: 10px 0;
+        }
+
+        code[class*=language-], pre[class*=language-] {
+            color: #000;
+            background: 0 0;
+            text-shadow: 0 1px #fff;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1em;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.5;
+            -moz-tab-size: 4;
+            -o-tab-size: 4;
+            tab-size: 4;
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none
+        }
+
+        code[class*=language-] ::-moz-selection, code[class*=language-]::-moz-selection, pre[class*=language-] ::-moz-selection, pre[class*=language-]::-moz-selection {
+            text-shadow: none;
+            background: #b3d4fc
+        }
+
+        code[class*=language-] ::selection, code[class*=language-]::selection, pre[class*=language-] ::selection, pre[class*=language-]::selection {
+            text-shadow: none;
+            background: #b3d4fc
+        }
+
+        @media print {
+            code[class*=language-], pre[class*=language-] {
+                text-shadow: none
+            }
+        }
+
+        pre[class*=language-] {
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto
+        }
+
+        :not(pre) > code[class*=language-], pre[class*=language-] {
+            background: #f5f2f0
+        }
+
+        :not(pre) > code[class*=language-] {
+            padding: .1em;
+            border-radius: .3em;
+            white-space: normal
+        }
+
+        .token.cdata, .token.comment, .token.doctype, .token.prolog {
+            color: #708090
+        }
+
+        .token.punctuation {
+            color: #999
+        }
+
+        .token.namespace {
+            opacity: .7
+        }
+
+        .token.boolean, .token.constant, .token.deleted, .token.number, .token.property, .token.symbol, .token.tag {
+            color: #905
+        }
+
+        .token.attr-name, .token.builtin, .token.char, .token.inserted, .token.selector, .token.string {
+            color: #690
+        }
+
+        .language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url {
+            color: #9a6e3a;
+            background: hsla(0, 0%, 100%, .5)
+        }
+
+        .token.atrule, .token.attr-value, .token.keyword {
+            color: #07a
+        }
+
+        .token.class-name, .token.function {
+            color: #dd4a68
+        }
+
+        .token.important, .token.regex, .token.variable {
+            color: #e90
+        }
+
+        .token.bold, .token.important {
+            font-weight: 700
+        }
+
+        .token.italic {
+            font-style: italic
+        }
+
+        .token.entity {
+            cursor: help
+        }
+
+    </style>
+    <script>
+        /* PrismJS 1.29.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+        var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(e){var n=/(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i,t=0,r={},a={manual:e.Prism&&e.Prism.manual,disableWorkerMessageHandler:e.Prism&&e.Prism.disableWorkerMessageHandler,util:{encode:function e(n){return n instanceof i?new i(n.type,e(n.content),n.alias):Array.isArray(n)?n.map(e):n.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).slice(8,-1)},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function e(n,t){var r,i;switch(t=t||{},a.util.type(n)){case"Object":if(i=a.util.objId(n),t[i])return t[i];for(var l in r={},t[i]=r,n)n.hasOwnProperty(l)&&(r[l]=e(n[l],t));return r;case"Array":return i=a.util.objId(n),t[i]?t[i]:(r=[],t[i]=r,n.forEach((function(n,a){r[a]=e(n,t)})),r);default:return n}},getLanguage:function(e){for(;e;){var t=n.exec(e.className);if(t)return t[1].toLowerCase();e=e.parentElement}return"none"},setLanguage:function(e,t){e.className=e.className.replace(RegExp(n,"gi"),""),e.classList.add("language-"+t)},currentScript:function(){if("undefined"==typeof document)return null;if("currentScript"in document)return document.currentScript;try{throw new Error}catch(r){var e=(/at [^(\r\n]*\((.*):[^:]+:[^:]+\)$/i.exec(r.stack)||[])[1];if(e){var n=document.getElementsByTagName("script");for(var t in n)if(n[t].src==e)return n[t]}return null}},isActive:function(e,n,t){for(var r="no-"+n;e;){var a=e.classList;if(a.contains(n))return!0;if(a.contains(r))return!1;e=e.parentElement}return!!t}},languages:{plain:r,plaintext:r,text:r,txt:r,extend:function(e,n){var t=a.util.clone(a.languages[e]);for(var r in n)t[r]=n[r];return t},insertBefore:function(e,n,t,r){var i=(r=r||a.languages)[e],l={};for(var o in i)if(i.hasOwnProperty(o)){if(o==n)for(var s in t)t.hasOwnProperty(s)&&(l[s]=t[s]);t.hasOwnProperty(o)||(l[o]=i[o])}var u=r[e];return r[e]=l,a.languages.DFS(a.languages,(function(n,t){t===u&&n!=e&&(this[n]=l)})),l},DFS:function e(n,t,r,i){i=i||{};var l=a.util.objId;for(var o in n)if(n.hasOwnProperty(o)){t.call(n,o,n[o],r||o);var s=n[o],u=a.util.type(s);"Object"!==u||i[l(s)]?"Array"!==u||i[l(s)]||(i[l(s)]=!0,e(s,t,o,i)):(i[l(s)]=!0,e(s,t,null,i))}}},plugins:{},highlightAll:function(e,n){a.highlightAllUnder(document,e,n)},highlightAllUnder:function(e,n,t){var r={callback:t,container:e,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};a.hooks.run("before-highlightall",r),r.elements=Array.prototype.slice.apply(r.container.querySelectorAll(r.selector)),a.hooks.run("before-all-elements-highlight",r);for(var i,l=0;i=r.elements[l++];)a.highlightElement(i,!0===n,r.callback)},highlightElement:function(n,t,r){var i=a.util.getLanguage(n),l=a.languages[i];a.util.setLanguage(n,i);var o=n.parentElement;o&&"pre"===o.nodeName.toLowerCase()&&a.util.setLanguage(o,i);var s={element:n,language:i,grammar:l,code:n.textContent};function u(e){s.highlightedCode=e,a.hooks.run("before-insert",s),s.element.innerHTML=s.highlightedCode,a.hooks.run("after-highlight",s),a.hooks.run("complete",s),r&&r.call(s.element)}if(a.hooks.run("before-sanity-check",s),(o=s.element.parentElement)&&"pre"===o.nodeName.toLowerCase()&&!o.hasAttribute("tabindex")&&o.setAttribute("tabindex","0"),!s.code)return a.hooks.run("complete",s),void(r&&r.call(s.element));if(a.hooks.run("before-highlight",s),s.grammar)if(t&&e.Worker){var c=new Worker(a.filename);c.onmessage=function(e){u(e.data)},c.postMessage(JSON.stringify({language:s.language,code:s.code,immediateClose:!0}))}else u(a.highlight(s.code,s.grammar,s.language));else u(a.util.encode(s.code))},highlight:function(e,n,t){var r={code:e,grammar:n,language:t};if(a.hooks.run("before-tokenize",r),!r.grammar)throw new Error('The language "'+r.language+'" has no grammar.');return r.tokens=a.tokenize(r.code,r.grammar),a.hooks.run("after-tokenize",r),i.stringify(a.util.encode(r.tokens),r.language)},tokenize:function(e,n){var t=n.rest;if(t){for(var r in t)n[r]=t[r];delete n.rest}var a=new s;return u(a,a.head,e),o(e,a,n,a.head,0),function(e){for(var n=[],t=e.head.next;t!==e.tail;)n.push(t.value),t=t.next;return n}(a)},hooks:{all:{},add:function(e,n){var t=a.hooks.all;t[e]=t[e]||[],t[e].push(n)},run:function(e,n){var t=a.hooks.all[e];if(t&&t.length)for(var r,i=0;r=t[i++];)r(n)}},Token:i};function i(e,n,t,r){this.type=e,this.content=n,this.alias=t,this.length=0|(r||"").length}function l(e,n,t,r){e.lastIndex=n;var a=e.exec(t);if(a&&r&&a[1]){var i=a[1].length;a.index+=i,a[0]=a[0].slice(i)}return a}function o(e,n,t,r,s,g){for(var f in t)if(t.hasOwnProperty(f)&&t[f]){var h=t[f];h=Array.isArray(h)?h:[h];for(var d=0;d<h.length;++d){if(g&&g.cause==f+","+d)return;var v=h[d],p=v.inside,m=!!v.lookbehind,y=!!v.greedy,k=v.alias;if(y&&!v.pattern.global){var x=v.pattern.toString().match(/[imsuy]*$/)[0];v.pattern=RegExp(v.pattern.source,x+"g")}for(var b=v.pattern||v,w=r.next,A=s;w!==n.tail&&!(g&&A>=g.reach);A+=w.value.length,w=w.next){var E=w.value;if(n.length>e.length)return;if(!(E instanceof i)){var P,L=1;if(y){if(!(P=l(b,A,e,m))||P.index>=e.length)break;var S=P.index,O=P.index+P[0].length,j=A;for(j+=w.value.length;S>=j;)j+=(w=w.next).value.length;if(A=j-=w.value.length,w.value instanceof i)continue;for(var C=w;C!==n.tail&&(j<O||"string"==typeof C.value);C=C.next)L++,j+=C.value.length;L--,E=e.slice(A,j),P.index-=A}else if(!(P=l(b,0,E,m)))continue;S=P.index;var N=P[0],_=E.slice(0,S),M=E.slice(S+N.length),W=A+E.length;g&&W>g.reach&&(g.reach=W);var z=w.prev;if(_&&(z=u(n,z,_),A+=_.length),c(n,z,L),w=u(n,z,new i(f,p?a.tokenize(N,p):N,k,N)),M&&u(n,w,M),L>1){var I={cause:f+","+d,reach:W};o(e,n,t,w.prev,A,I),g&&I.reach>g.reach&&(g.reach=I.reach)}}}}}}function s(){var e={value:null,prev:null,next:null},n={value:null,prev:e,next:null};e.next=n,this.head=e,this.tail=n,this.length=0}function u(e,n,t){var r=n.next,a={value:t,prev:n,next:r};return n.next=a,r.prev=a,e.length++,a}function c(e,n,t){for(var r=n.next,a=0;a<t&&r!==e.tail;a++)r=r.next;n.next=r,r.prev=n,e.length-=a}if(e.Prism=a,i.stringify=function e(n,t){if("string"==typeof n)return n;if(Array.isArray(n)){var r="";return n.forEach((function(n){r+=e(n,t)})),r}var i={type:n.type,content:e(n.content,t),tag:"span",classes:["token",n.type],attributes:{},language:t},l=n.alias;l&&(Array.isArray(l)?Array.prototype.push.apply(i.classes,l):i.classes.push(l)),a.hooks.run("wrap",i);var o="";for(var s in i.attributes)o+=" "+s+'="'+(i.attributes[s]||"").replace(/"/g,"&quot;")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'"'+o+">"+i.content+"</"+i.tag+">"},!e.document)return e.addEventListener?(a.disableWorkerMessageHandler||e.addEventListener("message",(function(n){var t=JSON.parse(n.data),r=t.language,i=t.code,l=t.immediateClose;e.postMessage(a.highlight(i,a.languages[r],r)),l&&e.close()}),!1),a):a;var g=a.util.currentScript();function f(){a.manual||a.highlightAll()}if(g&&(a.filename=g.src,g.hasAttribute("data-manual")&&(a.manual=!0)),!a.manual){var h=document.readyState;"loading"===h||"interactive"===h&&g&&g.defer?document.addEventListener("DOMContentLoaded",f):window.requestAnimationFrame?window.requestAnimationFrame(f):window.setTimeout(f,16)}return a}(_self);"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+        Prism.languages.markup={comment:{pattern:/<!--(?:(?!<!--)[\s\S])*?-->/,greedy:!0},prolog:{pattern:/<\?[\s\S]+?\?>/,greedy:!0},doctype:{pattern:/<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,greedy:!0,inside:{"internal-subset":{pattern:/(^[^\[]*\[)[\s\S]+(?=\]>$)/,lookbehind:!0,greedy:!0,inside:null},string:{pattern:/"[^"]*"|'[^']*'/,greedy:!0},punctuation:/^<!|>$|[[\]]/,"doctype-tag":/^DOCTYPE/i,name:/[^\s<>'"]+/}},cdata:{pattern:/<!\[CDATA\[[\s\S]*?\]\]>/i,greedy:!0},tag:{pattern:/<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,greedy:!0,inside:{tag:{pattern:/^<\/?[^\s>\/]+/,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"special-attr":[],"attr-value":{pattern:/=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,inside:{punctuation:[{pattern:/^=/,alias:"attr-equals"},{pattern:/^(\s*)["']|["']$/,lookbehind:!0}]}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:[{pattern:/&[\da-z]{1,8};/i,alias:"named-entity"},/&#x?[\da-f]{1,8};/i]},Prism.languages.markup.tag.inside["attr-value"].inside.entity=Prism.languages.markup.entity,Prism.languages.markup.doctype.inside["internal-subset"].inside=Prism.languages.markup,Prism.hooks.add("wrap",(function(a){"entity"===a.type&&(a.attributes.title=a.content.replace(/&amp;/,"&"))})),Object.defineProperty(Prism.languages.markup.tag,"addInlined",{value:function(a,e){var s={};s["language-"+e]={pattern:/(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,lookbehind:!0,inside:Prism.languages[e]},s.cdata=/^<!\[CDATA\[|\]\]>$/i;var t={"included-cdata":{pattern:/<!\[CDATA\[[\s\S]*?\]\]>/i,inside:s}};t["language-"+e]={pattern:/[\s\S]+/,inside:Prism.languages[e]};var n={};n[a]={pattern:RegExp("(<__[^>]*>)(?:<!\\[CDATA\\[(?:[^\\]]|\\](?!\\]>))*\\]\\]>|(?!<!\\[CDATA\\[)[^])*?(?=</__>)".replace(/__/g,(function(){return a})),"i"),lookbehind:!0,greedy:!0,inside:t},Prism.languages.insertBefore("markup","cdata",n)}}),Object.defineProperty(Prism.languages.markup.tag,"addAttribute",{value:function(a,e){Prism.languages.markup.tag.inside["special-attr"].push({pattern:RegExp("(^|[\"'\\s])(?:"+a+")\\s*=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s'\">=]+(?=[\\s>]))","i"),lookbehind:!0,inside:{"attr-name":/^[^\s=]+/,"attr-value":{pattern:/=[\s\S]+/,inside:{value:{pattern:/(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,lookbehind:!0,alias:[e,"language-"+e],inside:Prism.languages[e]},punctuation:[{pattern:/^=/,alias:"attr-equals"},/"|'/]}}}})}}),Prism.languages.html=Prism.languages.markup,Prism.languages.mathml=Prism.languages.markup,Prism.languages.svg=Prism.languages.markup,Prism.languages.xml=Prism.languages.extend("markup",{}),Prism.languages.ssml=Prism.languages.xml,Prism.languages.atom=Prism.languages.xml,Prism.languages.rss=Prism.languages.xml;
+        !function(s){var e=/(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;s.languages.css={comment:/\/\*[\s\S]*?\*\//,atrule:{pattern:RegExp("@[\\w-](?:[^;{\\s\"']|\\s+(?!\\s)|"+e.source+")*?(?:;|(?=\\s*\\{))"),inside:{rule:/^@[\w-]+/,"selector-function-argument":{pattern:/(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,lookbehind:!0,alias:"selector"},keyword:{pattern:/(^|[^\w-])(?:and|not|only|or)(?![\w-])/,lookbehind:!0}}},url:{pattern:RegExp("\\burl\\((?:"+e.source+"|(?:[^\\\\\r\n()\"']|\\\\[^])*)\\)","i"),greedy:!0,inside:{function:/^url/i,punctuation:/^\(|\)$/,string:{pattern:RegExp("^"+e.source+"$"),alias:"url"}}},selector:{pattern:RegExp("(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|"+e.source+")*(?=\\s*\\{)"),lookbehind:!0},string:{pattern:e,greedy:!0},property:{pattern:/(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,lookbehind:!0},important:/!important\b/i,function:{pattern:/(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,lookbehind:!0},punctuation:/[(){};:,]/},s.languages.css.atrule.inside.rest=s.languages.css;var t=s.languages.markup;t&&(t.tag.addInlined("style","css"),t.tag.addAttribute("style","css"))}(Prism);
+        Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,lookbehind:!0,greedy:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0,greedy:!0}],string:{pattern:/(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/(\b(?:class|extends|implements|instanceof|interface|new|trait)\s+|\bcatch\s+\()[\w.\\]+/i,lookbehind:!0,inside:{punctuation:/[.\\]/}},keyword:/\b(?:break|catch|continue|do|else|finally|for|function|if|in|instanceof|new|null|return|throw|try|while)\b/,boolean:/\b(?:false|true)\b/,function:/\b\w+(?=\()/,number:/\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,operator:/[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,punctuation:/[{}[\];(),.:]/};
+        Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.languages.clike["class-name"],{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/,lookbehind:!0}],keyword:[{pattern:/((?:^|\})\s*)catch\b/,lookbehind:!0},{pattern:/(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,lookbehind:!0}],function:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,number:{pattern:RegExp("(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\.(?:\\d+(?:_\\d+)*)?)?|\\.\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])"),lookbehind:!0},operator:/--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/}),Prism.languages.javascript["class-name"][0].pattern=/(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/,Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:RegExp("((?:^|[^$\\w\\xA0-\\uFFFF.\"'\\])\\s]|\\b(?:return|yield))\\s*)/(?:(?:\\[(?:[^\\]\\\\\r\n]|\\\\.)*\\]|\\\\.|[^/\\\\\\[\r\n])+/[dgimyus]{0,7}|(?:\\[(?:[^[\\]\\\\\r\n]|\\\\.|\\[(?:[^[\\]\\\\\r\n]|\\\\.|\\[(?:[^[\\]\\\\\r\n]|\\\\.)*\\])*\\])*\\]|\\\\.|[^/\\\\\\[\r\n])+/[dgimyus]{0,7}v[dgimyus]{0,7})(?=(?:\\s|/\\*(?:[^*]|\\*(?!/))*\\*/)*(?:$|[\r\n,.;:})\\]]|//))"),lookbehind:!0,greedy:!0,inside:{"regex-source":{pattern:/^(\/)[\s\S]+(?=\/[a-z]*$)/,lookbehind:!0,alias:"language-regex",inside:Prism.languages.regex},"regex-delimiter":/^\/|\/$/,"regex-flags":/^[a-z]+$/}},"function-variable":{pattern:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,alias:"function"},parameter:[{pattern:/(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,lookbehind:!0,inside:Prism.languages.javascript},{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,lookbehind:!0,inside:Prism.languages.javascript},{pattern:/(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,lookbehind:!0,inside:Prism.languages.javascript},{pattern:/((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,lookbehind:!0,inside:Prism.languages.javascript}],constant:/\b[A-Z](?:[A-Z_]|\dx?)*\b/}),Prism.languages.insertBefore("javascript","string",{hashbang:{pattern:/^#!.*/,greedy:!0,alias:"comment"},"template-string":{pattern:/`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,greedy:!0,inside:{"template-punctuation":{pattern:/^`|`$/,alias:"string"},interpolation:{pattern:/((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,lookbehind:!0,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:Prism.languages.javascript}},string:/[\s\S]+/}},"string-property":{pattern:/((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m,lookbehind:!0,greedy:!0,alias:"property"}}),Prism.languages.insertBefore("javascript","operator",{"literal-property":{pattern:/((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m,lookbehind:!0,alias:"property"}}),Prism.languages.markup&&(Prism.languages.markup.tag.addInlined("script","javascript"),Prism.languages.markup.tag.addAttribute("on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)","javascript")),Prism.languages.js=Prism.languages.javascript;
+    </script>
 </head>
 <body>
-    <h1>Apollo GraphQL</h1>
-    <p>Случвало ли ви се е да имате нужда от само едно поле от даден отговор, но да се наложи да изпращате голяма заявка всеки път, когато искате да го получите? А да получавате твърде малко данни? Да се налага да правите няколко заявки, за да получите информация за един обект? Инжинерите на фейсбук са изпитали същите проблеми още през 2012 година и след 3 години разработка стигнали до решението - GraphQL.</p>
-    <p> GraphQL е език за заявки за Application Programming Interface (API), който предоставя по-гъвкав и ефективен начин за комуникация между клиент и сървър. Клиентът дефинира какво точно желае, а сървърът връща точно това и нито поле повече.</p>
-    <p><strong>Apollo GraphQL</strong> представлява набор от инструменти, които спомагат за имплементацията на <strong>GraphQL</strong> на ниво клиент и сървър.</p>
+<h1>Apollo GraphQL</h1>
+<p>В дигитален свят, където данните се смятат за новото злато, ефективното и гъвкаво управление на информация става все
+    по-изискано. Всеки път, когато ни трябва само едно поле от даден отговор, сме принудени да изпращаме голяма заявка.
+    В резултат, получаваме твърде много или твърде малко данни, които ни принуждават да правим няколко допълнителни
+    заявки. Такива ситуации пренасяме натоварването върху нашите системи и намаляваме ефективността на нашите
+    приложения. Решението на проблема е придобило името <strong>GraphQL</strong> и е разработено от екипа на инженери на
+    Facebook през 2015 година.</p>
+<p>GraphQL е език за заявки за Application Programming Interface (API), който предоставя възможност за по-гъвкав и
+    ефективен начин на комуникация между клиент и сървър. Вместо да принуждава клента да се адаптира към предварително
+    дефинирани структури на данни, GraphQL позволява на клиента да определя какво точно иска от сървъра.</p>
+<p><strong>Apollo GraphQL</strong>, от друга страна, е платформа, която предлага набор от инструменти и услуги, които ви
+    помагат да конструирате и управлявате GraphQL API. Тя оптимизира интеракцията между клиент и сървър и предлага
+    многобройни функции и опции за ъгъвкаво и мощно управление на вашите данни.</p>
+<p>Целта на този реферат е да запознае читателите с основните концепции и предимства на GraphQL, както и с начина, по
+    който Apollo GraphQL може да улесни и оптимизира работата с този език за заявки. Специално внимание ще бъде обърнато
+    на следните аспекти:</p>
+
+<ul>
+    <li>Устойчивостта на GraphQL и причините за неговата популярност</li>
+    <li>Основните характеристики на GraphQL и изгодите, които предлага</li>
+    <li>Как Apollo GraphQL допринася за по-добро използване на GraphQL</li>
+    <li>Потенциалните приложения и случаи на употреба на Apollo GraphQL</li>
+</ul>
+
+<p>Със задълбочено разглеждане на тези теми, настоящият реферат има за цел да предостави на студентите необходимите
+    знания и умения за ефективно използване на Apollo GraphQL в своите проекти и работни процеси.</p>
+
+<h2>Основни концепции на GraphQL: Заявки, Мутации, Схеми</h2>
+
+<h3>Заявки (Queries)</h3>
+<p>В основата на GraphQL са <strong>заявките (queries)</strong>, които позволяват на клиентите да четат данни от вашия
+    сървър. Те са аналогични на GET заявките в REST и се използват за извличане на специфични данни, които клиентът
+    желае да види. С GraphQL, клиентът може точно да специфицира кои данни са му нужни, което намалява необходимостта от
+    излишни данни и увеличава производителността на приложението.</p>
+
+<h3>Мутации (Mutations)</h3>
+<p><strong>Мутациите (mutations)</strong> са вторият основен тип операции в GraphQL. Вместо да четат данни, мутациите
+    въвеждат промяна – те могат да създадат, обновят или изтрият данни. Те са аналогични на PUT, POST и DELETE заявките
+    в REST.</p>
+
+<h3>Схеми (Schemas)</h3>
+<p>Всеки GraphQL сървър се управлява от <strong>схема (schema)</strong>, която дефинира възможните заявки и мутации,
+    които могат да бъдат изпълнени от клиента. Схемата описва възможните типове данни, които могат да бъдат върнати от
+    заявките, и определя формата на отговорите. Тя също така дефинира какви параметри могат да бъдат приложени към всяка
+    заявка или мутация.</p>
+
+<h2>Сравнение между REST и GraphQL</h2>
+
+<p>REST и GraphQL са два от най-използваните подхода за изграждане на API-та, но те предлагат различни методи и
+    предимства при управлението на данни.</p>
+
+<h3>Структура на данните</h3>
+<p>В REST, данните обикновено са организирани по ресурси, които се достъпват чрез отделни URL. Всеки ресурс има
+    собствено URL и не е възможно да извлечете няколко ресурса с една заявка. В GraphQL, от друга страна, всички данни
+    са доступни през една единствена точка на достъп и клиентът може да определя кои данни иска в отговора.</p>
+
+<h3>Гъвкавост при заявките</h3>
+<p>REST изпраща предварително дефинирани данни за всеки ресурс, което може да включва информация, която клиентът не
+    използва. С GraphQL, от друга страна, клиентът може точно да дефинира кои данни иска, което намалява излишните данни
+    и увеличава ефективността на приложението.</p>
+
+<h3>Обновяване на данни</h3>
+<p>В REST, обновяването на данни често изисква няколко заявки към различни URL адреси. GraphQL, от друга страна,
+    предлага мутации, които позволяват на клиентите да създават, обновяват и изтриват данни с една единствена
+    заявка.</p>
+
+<h3>Управление на версии</h3>
+<p>REST изисква версиониране на API-та, за да се справи с промените в структурата на данните. С GraphQL, промените в
+    данните просто се отразяват като нови полета в схемата, докато старите полета се поддържат за обратна
+    съвместимост.</p>
+
+<p>Въпреки разликите, и двата подхода имат своите силни страни и могат да бъдат използвани ефективно в зависимост от
+    конкретните нужди на проекта.</p>
+
+<h1>Преглед на Apollo GraphQL</h1>
+<p>Apollo GraphQL е популярна библиотека за работа с GraphQL, която осигурява мощни инструменти за клиентска и сървърна
+    разработка. Тя се състои от три основни компонента:</p>
+
+<h2>Основни компоненти на Apollo</h2>
+<h3>1. Apollo Client</h3>
+<p>Apollo Client е библиотека за работа с GraphQL на клиентска страна. Тя позволява лесно изпращане на заявки,
+    управление на състояние и кеширане. Поддържа интеграции с популярни JavaScript рамки като React, Angular и Vue.</p>
+
+<h3>2. Apollo Server</h3>
+<p>Apollo Server е библиотека за създаване на GraphQL API на сървърната страна. Той опростява дефинирането на схеми,
+    резолвери и свързването с бази данни или други услуги.</p>
+
+<h3>3. Apollo Studio (опционално)</h3>
+<p>Apollo Studio е инструмент за мониторинг и управление на GraphQL API. Той предоставя функционалности като трасиране
+    на заявки, анализ на производителността и документиране на схемите.</p>
+
+<h2>Архитектура на Apollo</h2>
+<p>Архитектурата на Apollo включва взаимодействие между клиент, сървър и база данни. Клиентът изпраща GraphQL заявки
+    чрез Apollo Client, които се обработват от Apollo Server, а данните се извличат от базата данни или други
+    услуги.</p>
+
+<div class="diagram">
+    <h3>Диаграма на архитектурата на Apollo</h3>
+    <img src="apollo-architecture-diagram.svg" alt="Архитектура на Apollo GraphQL">
+    <p><i>Фигура: Архитектура на Apollo GraphQL, показваща взаимодействието между клиент, сървър и база данни.</i></p>
+</div>
+
+<h2>Примерен код</h2>
+<p>Ето примерен код за базов Apollo Server:</p>
+<pre><code class="language-javascript">const { ApolloServer, gql } = require('apollo-server');
+    const typeDefs = gql`
+    type Query {
+        hello: String
+    }`;
+
+    const resolvers = {
+        Query: {
+            hello: () => 'Hello, world!',
+        },
+    };
+
+    const server = new ApolloServer({ typeDefs, resolvers });
+    server.listen().then(({ url }) => {
+        console.log(`🚀 Server ready at ${url}`);
+    });
+</code></pre>
+<h1>Apollo Server</h1>
+<p><strong>Apollo Server</strong> е мощен инструмент за създаване на GraphQL API-та. Той осигурява лесен начин за изграждане на сървъри, които могат да обработват заявки от клиенти и да взаимодействат с различни източници на данни, като бази данни, външни услуги или микросървиси.</p>
+
+<h2>Какво е Apollo Server и за какво се използва?</h2>
+<p>Apollo Server е библиотека с отворен код за работа с GraphQL на сървърната страна. Основната му цел е да предостави интуитивен начин за дефиниране на GraphQL схеми и резолвери, които обработват клиентски заявки. Той е подходящ за:</p>
+<ul>
+    <li>Създаване на мащабируеми API-та.</li>
+    <li>Интеграция с различни източници на данни.</li>
+    <li>Подобряване на производителността чрез кеширане и оптимизиране на заявки.</li>
+</ul>
+
+<h2>Основни характеристики на Apollo Server</h2>
+<h3>1. Създаване на схеми</h3>
+<p>Apollo Server използва <em>Schema Definition Language (SDL)</em>, за да дефинира типовете данни и операциите, които API-то поддържа.</p>
+<pre><code class="language-javascript">const typeDefs = gql`
+    type Query {
+        books: [Book]
+    }
+    type Book {
+        title: String
+        author: String
+    }`;
+</code>
+</pre>
+
+<h3>2. Резолвери</h3>
+<p>Резолверите са функции, които обработват заявките и връщат данни. Те могат да използват логика за извличане на данни от бази данни, файлове или външни услуги.</p>
+<pre><code class="language-javascript">const resolvers = {
+        Query: {
+            books: () => [
+                { title: "The Hobbit", author: "J.R.R. Tolkien" },
+                { title: "1984", author: "George Orwell" },
+            ],
+        },
+    };</code></pre>
+
+<h3>3. Интеграция с бази данни</h3>
+<p>Apollo Server може да се свърже с бази данни като MongoDB, PostgreSQL или MySQL, за да извлича данни динамично. Чрез използване на ORM библиотеки като <strong>Sequelize</strong> или <strong>Mongoose</strong>, интеграцията става още по-лесна.</p>
+<p>Пример за интеграция с MongoDB:</p>
+<pre><code class="language-javascript">const mongoose = require('mongoose');
+    mongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true });
+    const Book = mongoose.model('Book', { title: String, author: String });
+
+    const resolvers = {
+        Query: {
+            books: async () => await Book.find(),
+        },
+    };</code></pre>
+
+<h2>Примерна архитектура</h2>
+<div class="diagram">
+    <h3>Диаграма на потока на заявките</h3>
+    <img src="apollo_server_architecture.png" alt="Диаграма на Apollo Server архитектура" style="max-width:100%; height:auto;">
+    <p>Клиентът изпраща заявка към Apollo Server, който обработва данните и връща отговор, базиран на схемата и резолверите.</p>
+</div>
+
+<h1>Apollo Client</h1>
+<p><strong>Apollo Client</strong> е мощна библиотека за управление на GraphQL заявки от клиентската страна. Тя осигурява лесен начин за извличане, кеширане и управление на данни в уеб или мобилни приложения. Apollo Client се използва за:</p>
+<ul>
+    <li>Изпълнение на GraphQL заявки и мутации.</li>
+    <li>Управление на състоянието на приложението чрез интеграция с локалния кеш.</li>
+    <li>Оптимизиране на производителността чрез автоматично кеширане и обновяване на данните.</li>
+</ul>
+
+<h2>Интеграция с React/Angular/Vue приложения</h2>
+<p>Apollo Client е съвместим с различни JavaScript рамки, като най-често се използва с React, Angular и Vue. Интеграцията обикновено включва конфигуриране на клиент и обгръщане на приложението с доставчик (<em>provider</em>), който предоставя достъп до GraphQL API.</p>
+
+<h3>Пример за интеграция с React</h3>
+<p>Примерен код за настройка на Apollo Client в React приложение:</p>
+<pre><code class="language-javascript">    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';<br><br>
+
+    const client = new ApolloClient({
+    uri: 'http://localhost:4000/graphql',
+    cache: new InMemoryCache(),
+    });
+
+    const App = () => (
+    <ApolloProvider client={client}>
+        <div>Hello Apollo!</div>
+    </ApolloProvider>
+    );
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+
+<h3>Пример за изпълнение на заявка от Apollo Client</h3>
+<p>С Apollo Client можем да изпълняваме заявки, използвайки функцията <code>query</code>. Ето пример за извличане на данни от сървъра:</p>
+<pre><code class="language-javascript">import { gql } from '@apollo/client';
+
+    client.query({
+    query: gql`
+    query GetBooks {
+        books {
+            title
+            author
+        }
+    }`,
+    }).then(result => console.log(result.data.books));</code></pre>
+
+<h3>Пример за интеграция с Vue</h3>
+<p>Примерен код за използване на Apollo Client във Vue приложение с помощта на <strong>vue-apollo</strong></p>
+<pre><code class="language-javascript">
+    import { createApp } from 'vue';
+    import { createApolloClient, provideApolloClient } from '@vue/apollo-composable';<br>
+    import App from './App.vue';
+
+    const apolloClient = new ApolloClient({
+    uri: 'http://localhost:4000/graphql',
+    cache: new InMemoryCache(),
+    });
+
+    provideApolloClient(apolloClient);
+
+    const app = createApp(App);
+    app.mount('#app');
+</code></pre>
+
+
 </body>
 </html>
